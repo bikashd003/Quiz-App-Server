@@ -1,5 +1,5 @@
 import mongoose from 'mongoose';
-const Db_Name = "Quiz App";
+const Db_Name = "Quiz_App";
 
 const connectDb = async () => {
 
