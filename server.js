@@ -4,6 +4,7 @@ import connectDb from "./Database/Db.js"
 dotenv.config({ path: "./.env" });
 import cors from 'cors';
 import adminRouter from './Routes/Admin.routes.js';
+import createRouter from './Routes/CreateQuiz.routes.js';
 
 
 
@@ -29,3 +30,4 @@ connectDb()
         console.log("MongoDB connection error", err)
     })
 app.use('/api', adminRouter);
+app.use("/api",createRouter);

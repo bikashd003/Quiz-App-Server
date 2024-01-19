@@ -12,7 +12,19 @@ const adminSchema = new Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+    createdQuiz:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Quiz"
+        }
+    ],
+    createdPoll:[
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Poll"
+        }
+    ]
 }
     , { timestamps: true });
 

@@ -17,10 +17,10 @@ const registerAdmin = async (req, res) => {
             return res.status(400).json({ message: "Admin already exists" })
         }
         const encryptedPassword = await bcrypt.hash(password, 10);
-        const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: "10d" });
+
         const newAdmin = new adminSchema({ name, email, password: encryptedPassword });
         await newAdmin.save();
-        res.status(201).json({ message: "Admin created successfully", token: token })
+        res.status(201).json({ message: "Admin created successfully" })
     } catch (error) {
         console.log("error to save user data", error)
         errorHandler(res, err)
