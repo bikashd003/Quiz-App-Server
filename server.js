@@ -5,6 +5,8 @@ dotenv.config({ path: "./.env" });
 import cors from 'cors';
 import adminRouter from './Routes/Admin.routes.js';
 import createRouter from './Routes/CreateQuiz.routes.js';
+import createPollRouter from './Routes/CreatePoll.routes.js';
+import takeQuizRouter from './Routes/TakeQuiz.routes.js';
 
 
 
@@ -31,3 +33,5 @@ connectDb()
     })
 app.use('/api', adminRouter);
 app.use("/api",createRouter);
+app.use("/api",createPollRouter)
+app.use("/api",takeQuizRouter);

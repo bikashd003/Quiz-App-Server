@@ -1,6 +1,6 @@
-import { Router } from "express";
+import {Router} from "express";
 import {createQuiz} from "../Controllers/CreateQuiz.controller.js";
-import isLoggedIn from "../Middlewares/isLoggedIn.middleware.js";
+import isLoggedIn from "../Middleware/Auth.middleware.js";
 const createRouter=Router();
 
 createRouter.post("/create-quiz",isLoggedIn,createQuiz)

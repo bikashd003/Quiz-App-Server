@@ -41,7 +41,7 @@ const loginAdmin = async (req, res) => {
         if (!isMatch) {
             return res.status(400).json({ message: "Invalid credentials" })
         }
-        const token = jwt.sign({ email }, process.env.JWT_SECRET, { expiresIn: "10d" });
+        const token = jwt.sign(admin.toJSON(), process.env.JWT_SECRET, { expiresIn: "10d" });
         res.status(200).json({ message: "Login successful", token: token })
     } catch (error) {
         console.log("error to save user data", error)
