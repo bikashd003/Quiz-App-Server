@@ -1,5 +1,20 @@
 import mongoose from "mongoose";
-
+const responseSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+  },
+  questionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+  selectedOption: {
+    type: String,
+  },
+  isCorrect: {
+    type: Boolean,
+  },
+});
 const questionOptionSchema = new mongoose.Schema({
   text: {
     type: String,
@@ -40,6 +55,9 @@ const quizSchema = new mongoose.Schema({
   questions: {
     type: [questionSchema],
     required: true,
+  },
+  responses: {
+    type: [responseSchema],
   },
 }, { timestamps: true });
 

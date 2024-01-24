@@ -1,5 +1,20 @@
 import mongoose from "mongoose";
-
+const responseSchema = new mongoose.Schema({
+  userId: {
+    type: String,
+    required: true,
+  },
+  questionId: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+  },
+  selectedOption: {
+    type: String,
+  },
+  isCorrect: {
+    type: Boolean,
+  },
+});
 const pollOptionSchema = new mongoose.Schema({
   text: {
     type: String,
@@ -32,6 +47,9 @@ const pollSchema = new mongoose.Schema({
   polls: {
     type: [questionSchema],
     required: true,
+  },
+  responses: {
+    type: [responseSchema],
   },
 }, { timestamps: true });
 
