@@ -8,6 +8,7 @@ import createRouter from './Routes/CreateQuiz.routes.js';
 import createPollRouter from './Routes/CreatePoll.routes.js';
 import takeQuizRouter from './Routes/TakeQuiz.routes.js';
 import viewQuizRouter from  "./Routes/ViewAnalytics.routes.js"
+import deleteRouter from './Routes/DeleteQuiz.routes.js';
 
 
 
@@ -37,3 +38,4 @@ app.use("/api",createRouter);
 app.use("/api",createPollRouter)
 app.use("/api",takeQuizRouter);
 app.use("/api",viewQuizRouter);
+app.use("/api",deleteRouter);

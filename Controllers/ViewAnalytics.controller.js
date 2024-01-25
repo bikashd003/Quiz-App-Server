@@ -10,7 +10,7 @@ const viewQuiz = async (req, res) => {
         const quizzes = quiz.createdQuiz;
         const polls = poll.createdPoll;
         const allDetails = [...quizzes, ...polls]
-        allDetails.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+        allDetails.sort((a, b) => new Date(a.createdAt) - new Date(b.createdAt));
         res.status(200).json(allDetails);
     } catch (error) {
         errorHandler(res, error)
