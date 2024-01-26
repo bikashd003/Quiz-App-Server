@@ -1,20 +1,5 @@
 import mongoose from "mongoose";
-const responseSchema = new mongoose.Schema({
-  userId: {
-    type: String,
-    required: true,
-  },
-  questionId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-  },
-  selectedOption: {
-    type: String,
-  },
-  isCorrect: {
-    type: Boolean,
-  },
-});
+
 const questionOptionSchema = new mongoose.Schema({
   text: {
     type: String,
@@ -23,6 +8,8 @@ const questionOptionSchema = new mongoose.Schema({
     type: String,
   },
 });
+
+
 
 const questionSchema = new mongoose.Schema({
   text: {
@@ -41,7 +28,20 @@ const questionSchema = new mongoose.Schema({
     type: Number,
     required: true,
   },
+  userAttempt: {
+    type: Number,
+    default: 0,
+  },
+  correctedAttempt: {
+    type: Number,
+    default: 0,
+  },
+  inCorrectedAttempt: {
+    type: Number,
+    default: 0,
+  },
 });
+
 
 const quizSchema = new mongoose.Schema({
   quizTitle: {
@@ -56,10 +56,9 @@ const quizSchema = new mongoose.Schema({
     type: [questionSchema],
     required: true,
   },
-  responses: {
-    type: [responseSchema],
+  impression: {
+    type: Number,
   },
 }, { timestamps: true });
 
 export default mongoose.model("Quiz", quizSchema);
-

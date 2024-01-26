@@ -1,26 +1,15 @@
 import mongoose from "mongoose";
-const responseSchema = new mongoose.Schema({
-  userId: {
-    type: String,
-    required: true,
-  },
-  questionId: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-  },
-  selectedOption: {
-    type: String,
-  },
-  isCorrect: {
-    type: Boolean,
-  },
-});
+
 const pollOptionSchema = new mongoose.Schema({
   text: {
     type: String,
   },
   imageURL: {
     type: String,
+  },
+  attempts: {
+    type: Number,
+    default: 0,
   },
 });
 
@@ -44,12 +33,12 @@ const pollSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  impression:{
+    type: Number,
+  },
   polls: {
     type: [questionSchema],
     required: true,
-  },
-  responses: {
-    type: [responseSchema],
   },
 }, { timestamps: true });
 

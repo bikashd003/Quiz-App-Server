@@ -16,4 +16,7 @@ const viewQuiz = async (req, res) => {
         errorHandler(res, error)
     }
 }
-export default viewQuiz;
+const viewQuizAnalysis=async(req,res)=>{
+
+}
+export {viewQuiz,viewQuizAnalysis};

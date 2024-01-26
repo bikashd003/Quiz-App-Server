@@ -7,8 +7,11 @@ import adminRouter from './Routes/Admin.routes.js';
 import createRouter from './Routes/CreateQuiz.routes.js';
 import createPollRouter from './Routes/CreatePoll.routes.js';
 import takeQuizRouter from './Routes/TakeQuiz.routes.js';
-import viewQuizRouter from  "./Routes/ViewAnalytics.routes.js"
+import viewQuizRouter from "./Routes/ViewAnalytics.routes.js"
 import deleteRouter from './Routes/DeleteQuiz.routes.js';
+import countImpressionRouter from './Routes/CountImpression.routes.js';
+import attemptRouter from './Routes/SaveUserAttempt.routes.js';
+
 
 
 
@@ -34,8 +37,10 @@ connectDb()
         console.log("MongoDB connection error", err)
     })
 app.use('/api', adminRouter);
-app.use("/api",createRouter);
-app.use("/api",createPollRouter)
-app.use("/api",takeQuizRouter);
-app.use("/api",viewQuizRouter);
-app.use("/api",deleteRouter);
+app.use("/api", createRouter);
+app.use("/api", createPollRouter)
+app.use("/api", takeQuizRouter);
+app.use("/api", viewQuizRouter);
+app.use("/api", deleteRouter);
+app.use("/api", countImpressionRouter);
+app.use("/api",attemptRouter)

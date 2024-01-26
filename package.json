@@ -6,8 +6,8 @@
   "type": "module",
   "scripts": {
     "dev": " nodemon -r dotenv/config--experimental-json-modules server.js",
-		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node server.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "author": "Bikash Das",
   "license": "ISC",
@@ -16,6 +16,7 @@
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
     "express": "^4.18.2",
+    "express-session": "^1.17.3",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.1.0"
   }
