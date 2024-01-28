@@ -11,6 +11,7 @@ import viewQuizRouter from "./Routes/ViewAnalytics.routes.js"
 import deleteRouter from './Routes/DeleteQuiz.routes.js';
 import countImpressionRouter from './Routes/CountImpression.routes.js';
 import attemptRouter from './Routes/SaveUserAttempt.routes.js';
+import updateRouter from './Routes/UpdateQuiz.routes.js';
 
 
 
@@ -44,3 +45,4 @@ app.use("/api", viewQuizRouter);
 app.use("/api", deleteRouter);
 app.use("/api", countImpressionRouter);
 app.use("/api",attemptRouter)
+app.use("/api",updateRouter)

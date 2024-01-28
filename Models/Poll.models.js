@@ -18,6 +18,10 @@ const questionSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  optionType:{
+    type: String,
+    required: true,
+  },
   options: {
     type: [pollOptionSchema],
     required: true,
