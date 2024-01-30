@@ -62,6 +62,7 @@ const quizSchema = new mongoose.Schema({
   },
   impression: {
     type: Number,
+    default: 0,
   },
 }, { timestamps: true });
 

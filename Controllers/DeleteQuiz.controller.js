@@ -12,10 +12,10 @@ const deleteQuiz = async (req, res) => {
         let updateField;
         if (quizType === "Q&A") {
             deletedQuiz = await quizSchema.findByIdAndDelete(quizId);
-            updateField = 'createdQuiz';
+            updateField = createdQuiz;
         } else if (quizType === "Poll Type") {
             deletedQuiz = await pollSchema.findByIdAndDelete(quizId);
-            updateField = 'createdPoll';
+            updateField = createdPoll;
         } else {
             return res.status(422).json({ message: "Invalid quizType" });
         }
@@ -24,12 +24,15 @@ const deleteQuiz = async (req, res) => {
             return res.status(404).json({ message: "Quiz not found" });
         }
 
-        await adminSchema.findByIdAndUpdate(
+        const updateAdmin = await adminSchema.findByIdAndUpdate(
             { _id: req.admin._id },
-            { $pull: { updateField: quizId } }
+            { $pull: { updateField: quizId } },
+            {new:true}
         );
-
-        res.status(200).json({ message: "Quiz deleted successfully" });
+        console.log(updateAdmin)
+        if (updateAdmin) {
+            res.status(200).json({ message: "Quiz deleted successfully" });
+        }
 
     } catch (error) {
         errorHandler(res, error);

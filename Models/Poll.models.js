@@ -39,6 +39,7 @@ const pollSchema = new mongoose.Schema({
   },
   impression:{
     type: Number,
+    default: 0,
   },
   polls: {
     type: [questionSchema],
