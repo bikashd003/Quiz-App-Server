@@ -12,13 +12,12 @@ const registerAdmin = async (req, res) => {
         return res.status(400).json({ message: "Passwords do not match" })
     }
     try {
-        const admin = await adminSchema.findOne({ email });
+        const admin = await adminSchema.findOne({ email: email.trim() });
         if (admin) {
-            return res.status(400).json({ message: "Admin already exists" })
+            return res.status(400).json({ error: "Email already exist" });
         }
         const encryptedPassword = await bcrypt.hash(password, 10);
-
-        const newAdmin = new adminSchema({ name, email, password: encryptedPassword });
+        const newAdmin = new adminSchema({ name, email: email.trim(), password: encryptedPassword });
         await newAdmin.save();
         res.status(201).json({ message: "Admin created successfully" })
     } catch (error) {
@@ -33,7 +32,7 @@ const loginAdmin = async (req, res) => {
         return res.status(400).json({ message: "All fields are required" })
     }
     try {
-        const admin = await adminSchema.findOne({ email });
+        const admin = await adminSchema.findOne({ email: email.trim() });
         if (!admin) {
             return res.status(400).json({ message: "Admin not found" })
         }
